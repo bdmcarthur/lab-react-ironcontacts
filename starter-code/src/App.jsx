@@ -1,18 +1,34 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import contacts from "./contacts.json";
 
 import "./App.css";
 
+const contactsArray = contacts.slice(0, 4);
+
 class App extends Component {
   render() {
-    const message = "This is my app";
-
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{message}</p>
-        </header>
+      <div>
+        <table>
+          <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Popularity</th>
+          </tr>
+          {contactsArray.map(contact => (
+            <tr>
+              <td>
+                <img src={contact.pictureUrl} alt="" />
+              </td>
+              <td>
+                <p>{contact.name}</p>
+              </td>
+              <td>
+                <p>{contact.popularity}</p>
+              </td>
+            </tr>
+          ))}
+        </table>
       </div>
     );
   }
